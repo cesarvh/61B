@@ -1,0 +1,156 @@
+1. Estimated running times (in big-theta notation):
+function1: Theta(1/2n^2)
+function2: Theta(n)
+function3: Theta(2n^2)
+
+Data:
+               n         time
+function1:
+			   1			0.00
+			   10			0.001
+			   100			0.015
+			   1000			0.326
+			   20000		1.284
+			   40000		4.82
+			   100000 	   31.536
+
+function2:
+				1 			0.0
+				10 			0.0
+				100 		0.0
+				1000 		0.001
+				10000 		0.004
+				100000 		0.013
+				200000000	1.517
+				400000000	2.982
+
+function3:
+				1 			0.0
+				10 			0.001
+				100 		0.022
+				1000 		8.088	
+				2000 		67.183
+				4000 		526.956
+
+
+Experimentally determined running time, assuming runtime is of the form ~aN^b:
+
+function1: ~.8.69226693 x 10-9 N^1.9
+function2: ~1.35054621 x 10-8 N^.97
+function3: ~1.88712374 x 10-8 x N^2.97
+
+2. Data:
+                              n             		time
+function4:
+							1 						0.0
+							4 						0.0
+							7 						0.0
+							33 						0.0
+							324						0.01
+							12123 					0.0	
+							472882027       		0.002
+							982,451,653 			0.001
+							104395303982451653		4.416 
+
+function5 (best case):
+Okay, I know i didn't code it but I was running out of time and what I needed to do
+was going to take too much time. So i'll try to explain it here. Suppose you have a 
+binary tree. In order to conduct a binary search, you have to explore each of the
+branches individually and check their left and right children until the value
+is either found or not. 
+
+The best case for this is that each child has a child, and you keep going down the
+tree until you find the value you are looking for. So each child has a child as such:
+				 5 
+				/ \ 
+			   3    7
+			  /\    /\
+			 2  4  6  8
+
+This would be best case, and it would take log n time. It's kind of complicated
+but ultimately it would be log n. 
+function5 (worst case):
+Now lets suppose you have another tree, but this one is not binary as such:
+			1
+			 \ 
+			  2
+			   \ 
+			    3
+			     \
+			      4
+			       \
+			       ...
+
+This would be worst case, because youd have to check EVERY single one until the end
+This would take linear time. 
+
+Again, I'm sorry I didnt have time to implement this. (1) it would have taken too long
+and I just didnt have time for that this weekend. I didnt go to lab because of health
+problems that arose Thursday night, which made me have to go to the Tang center. I then
+had work over the weekend, and i wasnt able to start until today. I hope you understand
+
+-Cesar
+
+
+
+3. Data:
+                              n         time
+ArrayList:
+							1 			.001
+							20 			0.0
+							200 		0.017 
+							2000 		0.028
+							20000 		0.327
+							40000 		1.282 
+							200000 		43.55
+							400000 		 		
+
+HashSet:
+							1 			0.0
+							20 			0.0
+							200 		0.003
+							2000 		0.005
+							20000 		0.022
+							200000 		0.125
+							2000000 	2.596 	
+							4000000 	4.71
+
+Experimentally determined running time:
+
+ArrayList: N^1.97
+HashSet: N^.85
+
+4. Data:
+                                       n         time
+Insertion sort with array list:
+										1 			0.0
+										20 			0.0
+										200 		0.003
+										2000 		0.026
+										20000 		0.334
+										40000		1.363	
+
+
+Insertion sort with linked list:
+										1 			0.0
+										20 			0.001
+										200 		0.008
+										2000 		3.878
+										4000 		33.259
+
+
+Experimentally determined running time:
+
+Insertion sort with array:        O(N^2)
+Insertion sort with linked list:  O(N^3)
+
+5. Initial guess: O(___)
+
+Data:             n               time
+
+
+
+
+Experimentally determined running time: O(___)
+
+

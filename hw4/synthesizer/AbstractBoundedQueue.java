@@ -1,0 +1,47 @@
+/*
+ * @author Cesarvh
+ */
+
+package synthesizer; 
+
+public abstract class AbstractBoundedQueue implements BoundedQueue {
+	protected int fillCount;
+	protected int capacity;
+
+	public int capacity(){
+		return this.capacity;
+	}
+
+	public int fillCount(){ 
+		return this.fillCount;
+
+	}
+
+	public boolean isEmpty(){ 
+		if (fillCount() == 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	public boolean isFull(){
+		if (fillCount == capacity){
+			return true;
+		}
+		else{
+			return false;
+		}
+
+	}
+
+	public abstract double peek();
+
+	public abstract double dequeue();
+
+	public abstract void enqueue(double x);
+
+}
+
+

@@ -1,0 +1,9 @@
+The problem with this method is that, when we call 
+isSameNumber, we are using == to check. The == is used to 
+check if objects are the same, whereas .equals() is used to 
+check if two values are the same. At 128, there is an error
+because new objects have to be created for both, a and b, 
+therefore, when we check if they are equal using ==, then it
+checks if they are the same object, which they are not, as 
+opposed to checking if they have the same value using .equals().
+If we used a.equals(b), then the method would work correctly.

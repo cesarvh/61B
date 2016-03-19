@@ -1,0 +1,19 @@
+Q1.
+(a) Superanimal
+(b) No
+(c) "I'm an animal"
+(d) Yes
+(e) None
+(f) Dynamic
+
+Q2. 
+(a) Compile-time (A)
+(b) "Ringading"
+(c) "Ringading"
+(d) dynamic
+
+Q3.
+(a) True
+(b) "superanimal"
+(c) "Superanimal"
+(d) static

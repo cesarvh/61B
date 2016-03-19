@@ -1,0 +1,100 @@
+Basic Storage Design Plan for Gitlet
+
+
+Overview
+-------
+ . .gitlet/commits holds a series of sub-directories, each holding a commit of files. These are time-stamped and kept in order, with most likely a TreeMap.
+ . .gitlet/adds holds a series of files that have been staged. It is cleared every time a new commit is made. 
+ . Since each new commit is inclusive of the previous commit, then the .gitlet/commits looks at the previous sub-directory and copies everything over as well as whatever it grabebd from the .gitlet/adds folder. 
+
+
+
+
+Sequential Example
+-------
+
+For each of the commands below, describe in detail what files on your computer change after the command is executed. Only list changes made to files. Do not list details regarding the reading of files.
+
+$ java Gitlet init
+
+ . If it does not already exist, a new folder called .gitlet is created in the current directory.
+ . A new empty file is created under the directory commits/saveCommits.ser
+ . If a .gitlet already exists, then we inform the user that this directory already has a .gitlet folder
+
+
+
+$ java Gitlet add dog.txt
+ . Adds the file to a Queue (HashSet)
+ . If the file is added multiple times, then the latter addition takes precedence, overwriting the old file.
+ . These "Additions" are added to a temporary folder, .gitlet/adds
+
+
+$ java Gitlet commit “initial commit of dog.txt”
+ . The file is taken out of the queue
+ . The .gitlet/adds folder is cleared once the commit has been made
+ . The commited file is added to the .gitlet/commits folder
+
+
+$ java Gitlet add dog.txt
+ . Nothing should change because the file has not yet been modified
+
+
+$ cp manyDogs.txt dog.txt
+$ java Gitlet add dog.txt
+ . The contents of dog.txt are changed, but they are not yet changed in the .gitlet directory because they are in the current working directory.
+ . Once the add command is executed, dog.txt has now been modified. We can now then add it to the .gitlet/adds folder that keeps track of the adds before the next commit.
+ . The .gitlet/commits folder remains unchanged.
+
+
+$ java Gitlet commit “replaced dog.txt with manyDogs”
+ . .gitlet/adds folder is once again cleared
+ . A new version of dogs.txt is created in the .gitlet/commits folder and is timestamped
+ . The old version is NOT changed/overwritten. This new file should be entirely independent of the old dog.txt file! 
+
+
+$ java Gitlet add manyDogs.txt
+ . manyDogs.txt is added to the .gitlet/adds folder
+ . the .gitlet/commits folder remains entirely unchanged
+
+
+$ java Gitlet add ketchupFriend.txt
+ . The ketchupFriend.txt file is added to the queue AKA .gitlet/adds folder where it will remain with manyDogs.txt until the next commit 
+ . dogs.txt is NOT changed and neither is the .gitlet/commits folder.
+
+
+$ java Gitlet commit “added manyDogs and ketchupFriend”
+ . manyDogs.txt and ketchupFriend.txt are taken out of the .gitlet/adds folder 
+ . the two files are then added to a new sub-directory in the .gitlet/commits folder
+
+
+
+$ java Gitlet commit YOLO
+ . YOLO is not a file
+ . Since YOLO is not a file, nothing should happen
+ . Also, YOLO was never even added, so it's not in the .gitlet/adds folder, so when the program went there to look for anything, it was empty, so everything remained unchanged. 
+ . Both, .gitlet/adds and .gitlet/commits remain entirely untouched. On the other hand, a message is printed out indicating that nothing was added and therefore there was nothing to commit, so the commit was empty. 
+
+
+$ cp doge.txt manyDogs.txt
+$ java Gitlet add manyDogs.txt
+ . The contents of manyDogs.txt are changed, but they are not yet changed in the .gitlet directory because they are in the current working directory.
+ . Once the add command is executed, manyDogs.txt has now been modified. We can now then add it to the .gitlet/adds folder that keeps track of the adds before the next commit.
+ . The .gitlet/commits folder remains unchanged.
+
+
+$ java Gitlet commit “replaced manyDogs with doge”
+ . Since the file was staged/added, then the .gitlet/added folder is not empty, therefore the program is able to go there and take the file and add it to a new sub-directory in the .git/commits folder
+ . The .gitlet/commits folder changes.
+ . The .gitlet/adds folder is then cleared once again.
+
+
+
+$ java Gitlet add dog.txt
+ . Since the file has not yet been modified, everything remains unchanged.
+
+
+
+$ java Gitlet commit “added dog yet again”
+ . Nothing changes because dog was never added in the first place, since it was unchanged.
+
+

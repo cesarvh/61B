@@ -1,0 +1,5 @@
+*.txt
+testAlpha*
+GuardGame.java
+.project
+.settings
