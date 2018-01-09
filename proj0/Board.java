@@ -1,5 +1,6 @@
 //Final Submission :) 5:00pm
-
+//This is a comment for cesar
+// wooogaiwlrkhjgslksfehdvk
 public class Board{
 	private static int S = 8;
 	private Piece[][] pieces = new Piece[S][S];
